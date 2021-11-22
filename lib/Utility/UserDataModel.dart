@@ -1,8 +1,3 @@
-import 'dart:async';
-
-import 'package:flutter_reward_claim/Webservices.dart';
-import 'package:flutter_reward_claim/WebservicesClient.dart';
-
 class UserData {
   var socialId = "";
   int user_id = 0;

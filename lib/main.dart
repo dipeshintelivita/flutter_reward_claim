@@ -1,9 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reward_claim/HomePage.dart';
-import 'package:flutter_reward_claim/SignupPage.dart';
-
-
+import 'package:flutter_reward_claim/screens/HomeScreen.dart';
+import 'package:flutter_reward_claim/screens/SignupScreen.dart';
+import 'package:flutter_reward_claim/screens/SplashScreen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,15 +11,359 @@ void main() async{
 }
 
 class MyApp extends StatelessWidget {
-  
+
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-      home: SignupPage(),
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
     );
   }
 }
 
-
+//
+// import 'package:flutter/material.dart';
+// import 'package:flutter_reward_claim/HomeScreen.dart';
+//
+// void main() {
+//   runApp(const MaterialApp(
+//     home: const ExampleStaggeredAnimations(),
+//     debugShowCheckedModeBanner: false,
+//   ),
+//   );
+// }
+//
+// class ExampleStaggeredAnimations extends StatefulWidget {
+//   const ExampleStaggeredAnimations({Key key}) : super(key: key);
+//
+//   @override
+//   _ExampleStaggeredAnimationsState createState() =>
+//       _ExampleStaggeredAnimationsState();
+// }
+//
+// class _ExampleStaggeredAnimationsState extends State<ExampleStaggeredAnimations>
+//     with SingleTickerProviderStateMixin {
+//    AnimationController _drawerSlideController;
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//
+//     _drawerSlideController = AnimationController(
+//       vsync: this,
+//       duration: const Duration(milliseconds: 150),
+//     );
+//   }
+//
+//   @override
+//   void dispose() {
+//     _drawerSlideController.dispose();
+//     super.dispose();
+//   }
+//
+//   bool _isDrawerOpen() {
+//     return _drawerSlideController.value == 1.0;
+//   }
+//
+//   bool _isDrawerOpening() {
+//     return _drawerSlideController.status == AnimationStatus.forward;
+//   }
+//
+//   bool _isDrawerClosed() {
+//     return _drawerSlideController.value == 0.0;
+//   }
+//
+//   void _toggleDrawer() {
+//     if (_isDrawerOpen() || _isDrawerOpening()) {
+//       _drawerSlideController.reverse();
+//     } else {
+//       _drawerSlideController.forward();
+//     }
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       appBar: _buildAppBar(),
+//       body: Stack(
+//         children: [
+//             detailView(),
+//            _buildContent(),
+//            _buildDrawer(),
+//         ],
+//       ),
+//     );
+//   }
+//
+//   PreferredSizeWidget _buildAppBar() {
+//     return PreferredSize(
+//       preferredSize: Size.fromHeight(50),
+//       child: AppBar(
+//         title: const Text(
+//           'ƠƑƑЄƦ ƲƤ',
+//           style: TextStyle(
+//             color: Colors.black,
+//           ),
+//         ),
+//         centerTitle: true,
+//         backgroundColor: Colors.black26,
+//         elevation: 0.0,
+//         automaticallyImplyLeading: false,
+//         actions:[
+//           AnimatedBuilder(
+//             animation: _drawerSlideController,
+//             builder: (context, child) {
+//               return IconButton(
+//                 onPressed: _toggleDrawer,
+//                 icon: _isDrawerOpen() || _isDrawerOpening()
+//                     ? const Icon(
+//                   Icons.clear,
+//                   color: Colors.black,
+//                 )
+//                     : const Icon(Icons.menu,
+//                     color: Colors.black,
+//                 ),
+//               );
+//             },
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+//    detailView(){
+//      return Container(
+//        child: Card(
+//          clipBehavior: Clip.antiAlias,
+//          child: Column(
+//            children: [
+//              ListTile(
+//                title: const Text('Food Item'),
+//                subtitle: Text(
+//                  'Description',
+//                  style: TextStyle(color: Colors.black.withOpacity(0.6)),
+//                ),
+//              ),
+//              Image.asset('assets/images/img2.jpg',height: 200,width: 400,fit: BoxFit.cover,),
+//              ButtonBar(
+//                alignment: MainAxisAlignment.start,
+//                children: [
+//                  OutlinedButton(
+//                    onPressed: (){},
+//                    style: ButtonStyle(
+//                      shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0))),
+//                    ),
+//                    child: Text("GET 50% off"),
+//                  ),
+//                ],
+//              ),
+//            ],
+//          ),
+//        ),
+//      );
+//    }
+//   Widget _buildContent() {
+//     // Put page content here.
+//     return const SizedBox();
+//   }
+//
+//   Widget _buildDrawer() {
+//     return AnimatedBuilder(
+//       animation: _drawerSlideController,
+//       builder: (context, child) {
+//         return FractionalTranslation(
+//           translation: Offset(1.0 - _drawerSlideController.value, 0.0),
+//           child: _isDrawerClosed() ? const SizedBox() : Menu(),
+//         );
+//       },
+//     );
+//   }
+// }
+//
+// class Menu extends StatefulWidget {
+//   @override
+//   _MenuState createState() => _MenuState();
+// }
+//
+// class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
+//   static const _menuTitles = [
+//     'Home',
+//     'Profile',
+//     'Orders',
+//     'Address',
+//     'About us',
+//   ];
+//
+//   static const _initialDelayTime = Duration(milliseconds: 50);
+//   static const _itemSlideTime = Duration(milliseconds: 250);
+//   static const _staggerTime = Duration(milliseconds: 50);
+//   static const _buttonDelayTime = Duration(milliseconds: 150);
+//   static const _buttonTime = Duration(milliseconds: 500);
+//   final _animationDuration = _initialDelayTime +
+//       (_staggerTime * _menuTitles.length) +
+//       _buttonDelayTime +
+//       _buttonTime;
+//
+//    AnimationController _staggeredController;
+//   final List<Interval> _itemSlideIntervals = [];
+//   Interval _buttonInterval;
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//
+//     _createAnimationIntervals();
+//
+//     _staggeredController = AnimationController(
+//       vsync: this,
+//       duration: _animationDuration,
+//     )..forward();
+//   }
+//
+//   void _createAnimationIntervals() {
+//     for (var i = 0; i < _menuTitles.length; ++i) {
+//       final startTime = _initialDelayTime + (_staggerTime * i);
+//       final endTime = startTime + _itemSlideTime;
+//       _itemSlideIntervals.add(
+//         Interval(
+//           startTime.inMilliseconds / _animationDuration.inMilliseconds,
+//           endTime.inMilliseconds / _animationDuration.inMilliseconds,
+//         ),
+//       );
+//     }
+//
+//     final buttonStartTime =
+//         Duration(milliseconds: (_menuTitles.length * 50)) + _buttonDelayTime;
+//     final buttonEndTime = buttonStartTime + _buttonTime;
+//     _buttonInterval = Interval(
+//       buttonStartTime.inMilliseconds / _animationDuration.inMilliseconds,
+//       buttonEndTime.inMilliseconds / _animationDuration.inMilliseconds,
+//     );
+//   }
+//
+//   @override
+//   void dispose() {
+//     _staggeredController.dispose();
+//     super.dispose();
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       color: Colors.white,
+//       child: Stack(
+//         fit: StackFit.expand,
+//         children: [
+//           // _buildFlutterLogo(),
+//           _buildContent(),
+//         ],
+//       ),
+//     );
+//   }
+//
+//
+//   // Widget _buildFlutterLogo() {
+//   //   return const Positioned(
+//   //     right: -100,
+//   //     bottom: -30,
+//   //     child: Opacity(
+//   //       opacity: 0.2,
+//   //       child: FlutterLogo(
+//   //         size: 400,
+//   //       ),
+//   //     ),
+//   //   );
+//   // }
+//
+//   Widget _buildContent() {
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         const SizedBox(height: 16),
+//         ..._buildListItems(),
+//         const Spacer(),
+//         _buildGetStartedButton(),
+//       ],
+//     );
+//   }
+//
+//   List<Widget> _buildListItems() {
+//     final listItems = <Widget>[];
+//     for (var i = 0; i < _menuTitles.length; ++i) {
+//       listItems.add(
+//         AnimatedBuilder(
+//           animation: _staggeredController,
+//           builder: (context, child) {
+//             final animationPercent = Curves.easeOut.transform(
+//               _itemSlideIntervals[i].transform(_staggeredController.value),
+//             );
+//             final opacity = animationPercent;
+//             final slideDistance = (1.0 - animationPercent) * 150;
+//
+//             return Opacity(
+//               opacity: opacity,
+//               child: Transform.translate(
+//                 offset: Offset(slideDistance, 0),
+//                 child: child,
+//               ),
+//             );
+//           },
+//           child: Padding(
+//             padding: const EdgeInsets.symmetric(horizontal: 36.0, vertical: 16),
+//             child: Text(
+//               _menuTitles[i],
+//               textAlign: TextAlign.left,
+//               style: const TextStyle(
+//                 fontSize: 22,
+//                 fontWeight: FontWeight.w500,
+//               ),
+//             ),
+//           ),
+//         ),
+//       );
+//     }
+//     return listItems;
+//   }
+//
+//   Widget _buildGetStartedButton() {
+//     return SizedBox(
+//       width: double.infinity,
+//       child: Padding(
+//         padding: const EdgeInsets.all(24.0),
+//         child: AnimatedBuilder(
+//           animation: _staggeredController,
+//           builder: (context, child) {
+//             final animationPercent = Curves.elasticOut.transform(
+//                 _buttonInterval.transform(_staggeredController.value));
+//             final opacity = animationPercent.clamp(0.0, 1.0);
+//             final scale = (animationPercent * 0.5) + 0.5;
+//
+//             return Opacity(
+//               opacity: opacity,
+//               child: Transform.scale(
+//                 scale: scale,
+//                 child: child,
+//               ),
+//             );
+//           },
+//           child: ElevatedButton(
+//             style: ElevatedButton.styleFrom(
+//               shape: const StadiumBorder(),
+//               primary: Colors.grey,
+//               padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 14),
+//             ),
+//             onPressed: () {},
+//             child: const Text(
+//               'Get started',
+//               style: TextStyle(
+//                 color: Colors.black,
+//                 fontSize: 22,
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

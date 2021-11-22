@@ -1,15 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reward_claim/SignupPage.dart';
 
-class HomePage extends StatefulWidget {
+
+class HomeScreen extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+            children: [
+              DrawerHeader(child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(height: 10,),
+                  CircleAvatar(
+                    radius: 30,
+                    child: Image.asset("assets/images/user.png"),
+                  ),
+                ],
+              )),
+              ListTile(title: Text("Home"), onTap: (){},),
+              ListTile(title: Text("Profile"), onTap: (){},),
+              ListTile(title: Text("Orders"), onTap: (){},),
+              ListTile(title: Text("About"), onTap: (){},),
+            ],
+          ),
+    ),
+      appBar: AppBar(
+        title: const Text(
+          'ƠƑƑЄƦ ƲƤ',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.black26,
+        elevation: 0.0,
+      ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
@@ -17,9 +49,9 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(height: 30,),
-            OfferButton(),
-            OfferButton(),
-            OfferButton(),
+            detailView(),
+            detailView(),
+            detailView(),
             SizedBox(
               height: 150,
             ),
@@ -34,7 +66,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-  OfferButton(){
+  detailView(){
     return Container(
       child: Card(
         clipBehavior: Clip.antiAlias,
@@ -65,4 +97,5 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
 }
