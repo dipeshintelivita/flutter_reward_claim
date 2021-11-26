@@ -6,9 +6,10 @@ import 'dart:async';
 
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_reward_claim/Utility/HexColor.dart';
 import 'package:flutter_reward_claim/Utility/shared_preferences_helper.dart';
 import 'package:flutter_reward_claim/screens/HomeScreen.dart';
-import 'package:flutter_reward_claim/screens/SignupScreen.dart';
+import 'package:flutter_reward_claim/screens/LoginScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -30,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
         Navigator.of(context)
             .pushReplacement(MaterialPageRoute(
-            builder: (context) => SignupScreen()));
+            builder: (context) => LoginScreen()));
       } else if (isFirstTime == null) {
         Navigator.of(context)
             .pushReplacement(MaterialPageRoute(
@@ -48,9 +49,9 @@ class _SplashScreenState extends State<SplashScreen> {
       body: AnimatedSplashScreen(
         duration: 1000,
         splash:'assets/icon/SplashLogo.png',
-        nextScreen: SignupScreen(),
+        nextScreen: LoginScreen(),
         splashTransition: SplashTransition.rotationTransition,
-        backgroundColor: Colors.grey,
+        backgroundColor: HexColor("404e6b"),
       ),
     );
   }
